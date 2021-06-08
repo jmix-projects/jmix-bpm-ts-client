@@ -46,6 +46,30 @@ const tasks = await jmixBpm.queryTasks({
 ## Development
 
 ### Tests
-In order to run integration tests you need to have a Jmix project running at `http://localhost:8080`. 
 
-BPM add-on must be added to the project, and the test process must be deployed. The process model file is [resources/ts-test-process.bpmn20.xml](resources/ts-test-process.bpmn20.xml). Also, the user group with the code **all** and the **All users** type must be created in the test project.
+#### Configure Jmix Application
+
+In order to run integration tests you need to have a Jmix project running at `http://localhost:8080`.
+
+Steps to configure the Jmix project:
+
+1. Create new Jmix project
+1. Add the following starters in the build.gradle file:
+```groovy
+    implementation "io.jmix.bpm:jmix-bpm-starter"
+    implementation "io.jmix.bpm:jmix-bpm-ui-starter"
+    implementation "io.jmix.bpm:jmix-bpm-rest-starter"
+    implementation "io.jmix.security:jmix-security-oauth2-starter"
+```
+3. Start the project
+3. Assign the **bpm-rest-api** role to the user **admin**
+3. Open the **BPM - User Groups** screen and create a new user group there. Group code is `all`, group type is `All users`
+3. Open the **BPM - Process Definitions** screen and upload the process using the **Upload BPMN XML** button. The process file is located here: [resources/ts-test-process.bpmn20.xml](resources/ts-test-process.bpmn20.xml).
+
+#### Run Tests
+
+To run integration tests use the following command:
+
+```bash
+npm run test
+```

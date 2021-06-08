@@ -103,7 +103,6 @@ describe('Jmix BPM TypeScript SDK e2e tests', function () {
       const response = await jmixBpm.queryTasks({
         assignee: 'admin'
       });
-      console.log(response);
     });
 
     test('complete task', async () => {
@@ -117,7 +116,6 @@ describe('Jmix BPM TypeScript SDK e2e tests', function () {
           action: 'complete'
         });
       expect(taskActionResponse.status).toBe(200);
-      console.log(taskActionResponse.status);
     });
   });
 
@@ -174,15 +172,15 @@ describe('Jmix BPM TypeScript SDK e2e tests', function () {
   });
 
   //todo
-  describe('history', () => {
-    test('query historic process instances', () => {
-
-    });
-
-    test('query historic tasks', () => {
-
-    });
-  });
+  // describe('history', () => {
+  //   test('query historic process instances', () => {
+  //
+  //   });
+  //
+  //   test('query historic tasks', () => {
+  //
+  //   });
+  // });
 
 // describe('deployments', () => {
 //   test('createDeployment', async (done) => {

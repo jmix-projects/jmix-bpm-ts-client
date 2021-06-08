@@ -73,3 +73,5 @@ To run integration tests use the following command:
 ```bash
 npm run test
 ```
+
+Test report will appear in the `test-report.html` file.

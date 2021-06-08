@@ -51,12 +51,22 @@ export class JmixBpm {
     this.storage.setItem(this.name + "_" + JmixBpm.REST_TOKEN_STORAGE_KEY, token);
   }
 
+  /**
+   * Loads a list of process definitions.
+   * @param filter Query criteria that limit the result list.
+   */
   public loadProcessDefinitions(
-    options?: ListProcessDefinitionsRequest
+    filter?: ListProcessDefinitionsRequest
   ): Promise<DataResponseProcessDefinitionResponse> {
-    return this.fetch('GET', "/repository/process-definitions", options, {handleAs: 'json'});
+    return this.fetch('GET', "/repository/process-definitions", filter, {handleAs: 'json'});
   }
 
+  /**
+   * Execute actions for a process definition (Update category, Suspend or Activate).
+   *
+   * @param processDefinitionId
+   * @param request
+   */
   public executeProcessDefinitionAction(
     processDefinitionId: string,
     request: ProcessDefinitionActionRequest
@@ -64,36 +74,66 @@ export class JmixBpm {
     return this.fetch('PUT', `/repository/process-definitions/${processDefinitionId}`, JSON.stringify(request), {handleAs: 'json'});
   }
 
+  /**
+   * List candidate starters for a process-definition
+   *
+   * @param processDefinitionId
+   */
   public listProcessDefinitionIdentityLinks(
     processDefinitionId: string
   ): Promise<Array<RestIdentityLink>> {
     return this.fetch('GET', `/repository/process-definitions/${processDefinitionId}/identitylinks`, null, {handleAs: 'json'});
   }
 
+
+  /**
+   * List process instances.
+   * @param options
+   */
   public loadProcessInstances(
     options?: ListOfProcessInstancesRequest
   ): Promise<DataResponseProcessInstanceResponse> {
     return this.fetch('GET', "/runtime/process-instances", options, {handleAs: 'json'});
   }
 
+  /**
+   * Query process instances.
+   * The request body can contain all possible filters that can be used in the List process instances URL query.
+   * On top of these, it’s possible to provide an array of variables to include in the query.
+   *
+   * @param request
+   */
   public queryProcessInstances(
     request: ProcessInstanceQueryRequest
   ): Promise<DataResponseProcessInstanceResponse> {
     return this.fetch('POST', "/query/process-instances", JSON.stringify(request), {handleAs: 'json'});
   }
 
+  /**
+   * Start process instace.
+   * @param request
+   */
   public startProcessInstance(
     request: ProcessInstanceCreateRequest
   ): Promise<ProcessInstanceResponse> {
     return this.fetch('POST', "/runtime/process-instances", JSON.stringify(request), {handleAs: 'json'});
   }
 
+  /**
+   * Query for tasks.
+   * @param request
+   */
   public queryTasks(
     request?: TaskQueryRequest
   ): Promise<DataResponseTaskResponse> {
     return this.fetch('POST', "/query/tasks", JSON.stringify(request), {handleAs: 'json'});
   }
 
+  /**
+   * Execute task action.
+   * @param taskId
+   * @param request
+   */
   public executeTaskAction(
     taskId: string,
     request: TaskActionRequest
@@ -101,6 +141,11 @@ export class JmixBpm {
     return this.fetch('POST', `/runtime/tasks/${taskId}`, JSON.stringify(request));
   }
 
+  /**
+   * Update multiple/single non-binary variable on a process instance.
+   * @param processInstanceId
+   * @param variables
+   */
   public updateProcessInstanceVariables(
     processInstanceId: string,
     variables: Array<RestVariable>
@@ -108,6 +153,10 @@ export class JmixBpm {
     return this.fetch('PUT', `/runtime/process-instances/${processInstanceId}/variables`, JSON.stringify(variables));
   }
 
+  /**
+   * List variables for a process instance.
+   * @param processInstanceId
+   */
   public listProcessInstanceVariables(
     processInstanceId: string
   ): Promise<Array<RestVariable>> {

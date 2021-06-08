@@ -25,11 +25,6 @@ const throwNormalizedJmixRestError = (e: Error | JmixRestError) => {
   throw e.name === 'JmixRestError' ? e : new JmixRestError({message: e.message});
 }
 
-// interface FetchOptions extends RequestInit {
-//   requestContentType?: string;
-//   responseContentType?: ContentType;
-// }
-
 export interface FetchOptions extends RequestInit {
   handleAs?: ContentType;
 }

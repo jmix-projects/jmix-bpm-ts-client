@@ -41,7 +41,6 @@ const jmixApp = new JmixApp('app', 'http://localhost:8080');
 const tasks = await jmixBpm.queryTasks({
   assignee: 'admin'
 });
-jmixApp
 ```
 
 ## Development

@@ -1,6 +1,6 @@
 # Jmix BPM TypeScript Client
 
-JavaScript library for web and Node.js which facilitates Jmix BPM REST API usage.
+TypeScript library for web and Node.js which facilitates Jmix BPM REST API usage.
 
 ## Development
 

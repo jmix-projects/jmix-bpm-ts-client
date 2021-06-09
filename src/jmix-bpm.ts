@@ -270,26 +270,3 @@ export function getBasicAuthHeaders(client: string, secret: string, locale = 'en
     "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
   };
 }
-
-//todo
-// async createDeployment(
-//   file: File
-// ): Promise<DeploymentResponse> {
-//   let formData = new FormData();
-//   // let blob = new Blob([fileContent]);
-//   // const file = new File([blob], 'file1.bpmn20.xml');
-//   formData.append("file", file, "file.bpmn20.xml");
-//   // return this.fetch('POST', '/repository/deployments', formData, {requestContentType: 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'});
-//   const response = await fetch('http://localhost:8080/bpm/api/process/repository/deployments', {
-//     method: 'POST',
-//     headers: {
-//       // 'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW',
-//       // 'Content-Type': undefined,
-//       'Authorization': `Bearer ${this.restApiToken}`,
-//       'Accept': 'application/json'
-//     },
-//     body: formData
-//   })
-//     .then()
-//   return response.json();
-// }

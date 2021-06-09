@@ -67,7 +67,7 @@ describe('Jmix BPM TypeScript SDK e2e tests', function () {
       expect(processInstancesResponse.processDefinitionName).toBe("TS Test Process");
     });
 
-    test('load process isntance', async () => {
+    test('load process instance', async () => {
       const processInstancesResponse = await jmixBpm.loadProcessInstances({});
       expect(processInstancesResponse.data.length).toBeGreaterThan(0);
     });
@@ -170,47 +170,4 @@ describe('Jmix BPM TypeScript SDK e2e tests', function () {
     });
 
   });
-
-  //todo
-  // describe('history', () => {
-  //   test('query historic process instances', () => {
-  //
-  //   });
-  //
-  //   test('query historic tasks', () => {
-  //
-  //   });
-  // });
-
-// describe('deployments', () => {
-//   test('createDeployment', async (done) => {
-//     // let blob = new Blob([processBpmnXml], {type: 'text/xml'});
-//     // const file = new File([blob], 'file1.bpmn20.xml');
-//
-//     let formData = new FormData();
-//     let readStream = fs.createReadStream('/Users/gorbunkov/Work/grant/typescript-sdk/jmix-bpm-ts-client/test/process.bpmn20.xml');
-//     formData.append("file", readStream);
-//     // const readable = Readable.from([processBpmnXml]);
-//     // formData.append("file", readable);
-//     // formData.append("file", blob, 'file.bpmn20.xml');
-//     // return this.fetch('POST', '/repository/deployments', formData, {requestContentType: 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'});
-//     const response = await fetch('http://localhost:8080/bpm/api/process/repository/deployments', {
-//       method: 'POST',
-//       headers: {
-//         // 'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW',
-//         // 'Content-Type': undefined,
-//         'Authorization': `Bearer ${jmixBpmApi.restApiToken}`,
-//         'Accept': 'application/json'
-//       },
-//       body: formData
-//     });
-//     console.log(response);
-//     // return response.json();
-//
-//
-//     // let deploymentResponse = await jmixBpmApi.createDeployment(file);
-//     // console.log(deploymentResponse);
-//   })
-// })
-
 });

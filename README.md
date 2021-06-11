@@ -27,9 +27,11 @@ Steps to configure the Jmix application:
 
 #### Run Tests
 
-To run integration tests use the following command:
+To run integration tests use the following commands:
 
 ```bash
+npm install
+npm run dist
 npm run test
 ```
 

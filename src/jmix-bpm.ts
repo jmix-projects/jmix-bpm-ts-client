@@ -34,7 +34,7 @@ type ContentType = "text" | "json" | "blob" | "raw" | 'multipart-form-data';
 export class JmixBpm {
 
   private static REST_TOKEN_STORAGE_KEY = "jmixBpmAccessToken";
-  private static BPM_PROCESS_API_URL_ROOT = "/bpm/api/process";
+  private static BPM_PROCESS_API_URL_ROOT = "/rest/bpm/process";
 
   constructor(public name = "",
               public jmixAppUrl: string,
@@ -162,6 +162,17 @@ export class JmixBpm {
   ): Promise<Array<RestVariable>> {
     return this.fetch('GET', `/runtime/process-instances/${processInstanceId}/variables`, null, {handleAs: 'json'});
   }
+
+  /**
+   * Query for historic process instances.
+   * @param request
+   */
+  public queryHistoricProcessInstances(
+    request?: TaskQueryRequest
+  ): Promise<DataResponseTaskResponse> {
+    return this.fetch('POST', "/query/tasks", JSON.stringify(request), {handleAs: 'json'});
+  }
+
 
   /**
    * Logs in user and stores token in provided storage.

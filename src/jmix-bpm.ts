@@ -4,9 +4,10 @@ import {DefaultStorage} from "./storage";
 
 //Types
 import {
+  DataResponseHistoricTaskInstanceResponse,
   DataResponseProcessDefinitionResponse, DataResponseProcessInstanceResponse,
   DataResponseTaskResponse,
-  DeploymentResponse,
+  DeploymentResponse, HistoricTaskInstanceQueryRequest, HistoricTaskInstanceResponse,
   ListOfProcessInstancesRequest,
   ListProcessDefinitionsRequest,
   ProcessDefinitionActionRequest,
@@ -167,10 +168,10 @@ export class JmixBpm {
    * Query for historic process instances.
    * @param request
    */
-  public queryHistoricProcessInstances(
-    request?: TaskQueryRequest
-  ): Promise<DataResponseTaskResponse> {
-    return this.fetch('POST', "/query/tasks", JSON.stringify(request), {handleAs: 'json'});
+  public queryHistoricTaskInstances(
+    request?: HistoricTaskInstanceQueryRequest
+  ): Promise<DataResponseHistoricTaskInstanceResponse> {
+    return this.fetch('POST', "/query/historic-task-instances", JSON.stringify(request), {handleAs: 'json'});
   }
 
 

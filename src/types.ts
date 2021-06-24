@@ -385,3 +385,106 @@ export interface ProcessInstanceQueryRequest {
   withoutTenantId?: boolean;
 }
 
+export interface HistoricTaskInstanceQueryRequest {
+  start?: number;
+  size?: number;
+  sort?: string;
+  order?: string;
+  taskId?: string;
+  processInstanceId?: string;
+  processInstanceIdWithChildren?: string;
+  processBusinessKey?: string;
+  processBusinessKeyLike?: string;
+  processDefinitionId?: string;
+  processDefinitionKey?: string;
+  processDefinitionKeyLike?: string;
+  processDefinitionName?: string;
+  processDefinitionNameLike?: string;
+  executionId?: string;
+  taskName?: string;
+  taskNameLike?: string;
+  taskDescription?: string;
+  taskDescriptionLike?: string;
+  taskDefinitionKey?: string;
+  taskDefinitionKeyLike?: string;
+  taskDefinitionKeys?: string[];
+  taskCategory?: string;
+  taskDeleteReason?: string;
+  taskDeleteReasonLike?: string;
+  taskAssignee?: string;
+  taskAssigneeLike?: string;
+  taskOwner?: string;
+  taskOwnerLike?: string;
+  taskInvolvedUser?: string;
+  taskPriority?: number;
+  taskMinPriority?: number;
+  taskMaxPriority?: number;
+  finished?: boolean;
+  processFinished?: boolean;
+  parentTaskId?: string;
+  dueDate?: string;
+  dueDateAfter?: string;
+  dueDateBefore?: string;
+  withoutDueDate?: boolean;
+  taskCreatedOn?: string;
+  taskCreatedBefore?: string;
+  taskCreatedAfter?: string;
+  taskCompletedOn?: string;
+  taskCompletedBefore?: string;
+  taskCompletedAfter?: string;
+  includeTaskLocalVariables?: boolean;
+  includeProcessVariables?: boolean;
+  taskVariables?: Array<QueryVariable>;
+  processVariables?: Array<QueryVariable>;
+  scopeDefinitionId?: string;
+  scopeId?: string;
+  scopeType?: string;
+  tenantId?: string;
+  tenantIdLike?: string;
+  withoutTenantId?: boolean;
+  withoutDeleteReason?: boolean;
+  taskCandidateGroup?: string;
+}
+
+export interface HistoricTaskInstanceResponse {
+  id?: string;
+  processDefinitionId?: string;
+  processDefinitionUrl?: string;
+  processInstanceId?: string;
+  processInstanceUrl?: string;
+  executionId?: string;
+  name?: string;
+  description?: string;
+  deleteReason?: string;
+  owner?: string;
+  assignee?: string;
+  startTime?: string;
+  endTime?: string;
+  durationInMillis?: number;
+  workTimeInMillis?: number;
+  claimTime?: string;
+  taskDefinitionKey?: string;
+  formKey?: string;
+  priority?: number;
+  dueDate?: string;
+  parentTaskId?: string;
+  url?: string;
+  variables?: Array<RestVariable>;
+  scopeDefinitionId?: string;
+  scopeId?: string;
+  subScopeId?: string;
+  scopeType?: string;
+  propagatedStageInstanceId?: string;
+  tenantId?: string;
+  category?: string;
+}
+
+export interface DataResponseHistoricTaskInstanceResponse {
+  data?: Array<HistoricTaskInstanceResponse>;
+  total?: number;
+  start?: number;
+  sort?: string;
+  order?: string;
+  size?: number;
+};
+

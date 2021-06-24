@@ -168,6 +168,16 @@ describe('Jmix BPM TypeScript SDK e2e tests', function () {
       });
       expect(var1.value).toBe('someValue');
     });
+  });
 
+  describe('historical data', () => {
+    test('query for historic task instances', async() => {
+      const response = await jmixBpm.queryHistoricTaskInstances({
+        processDefinitionKey: TS_TEST_PROCESS_KEY
+      });
+      console.log(response);
+      expect(response.size).toBeGreaterThan(0);
+      expect(response.data[0].name).toBe('Task 1');
+    });
   });
 });
